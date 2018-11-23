@@ -5,4 +5,5 @@
 This plugin lets you shoot enemies through walls like in 1.6. Damage amount is random. Also shows in chat victim and attacker names.
 
 HLmod : ссылочка
+
 YouTube : https://youtu.be/e0jrS7ZcVe8
