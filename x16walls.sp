@@ -3,7 +3,7 @@
 #define DMG_BULLET			(1 << 1)
 
 //Минимальный и максимальный урон
-#define MIN_DAMAGE 30
+#define MIN_DAMAGE 10
 #define MAX_DAMAGE 50
 
 public void OnPluginStart()
@@ -21,7 +21,7 @@ public void Event_WeaponFire(Handle event, const char[] szName, bool dontBroadca
 public void OnFireBullets(iClient, iShots, const char[] szWeapon)
 {
 	//Защита от всего, кроме оружий!
-	if (StrContains(szWeapon,"knife",false) == -1 && StrContains(szWeapon,"bayonet",false) == -1 && StrContains(szWeapon,"flashbang",false) == -1 && StrContains(szWeapon,"decoy",false) == -1 && StrContains(szWeapon,"grenade",false) == -1)
+	if (StrContains(szWeapon,"knife",false) == -1 && StrContains(szWeapon,"healthshot",false) == -1 && StrContains(szWeapon,"bayonet",false) == -1 && StrContains(szWeapon,"flashbang",false) == -1 && StrContains(szWeapon,"decoy",false) == -1 && StrContains(szWeapon,"grenade",false) == -1)
 	{
 		int i = GetClientViewClient(iClient);
 		int x = GetClientAimTarget(iClient, true);
@@ -29,7 +29,7 @@ public void OnFireBullets(iClient, iShots, const char[] szWeapon)
 		{
 			int d = GetRandomInt(MIN_DAMAGE, MAX_DAMAGE); 
 			DealDamage(x, d, iClient, DMG_BULLET, szWeapon);
-			PrintToChatAll(" >> \x03%N\x01 --|--> \x03%N\x01 | %s",iClient,x,szWeapon);
+			PrintToConsoleAll("[X16W] %N прострелил %N с %s",iClient,x,szWeapon);
 			
 			//Мы можем использовать SDKHooks_TakeDamage вместо DealDamage, но тогда не создастся события о уроне (SDKHook_OnTakeDamage)
 			//Например, перестанет работать плагин, показывающий нанесённый дамаг.
@@ -99,4 +99,3 @@ stock void DealDamage(int nClientVictim, int nDamage, int nClientAttacker = 0, i
         }
     }
 }
-
