@@ -39,6 +39,7 @@ public void OnFireBullets(iClient, iShots, const char[] szWeapon)
 	}
 }
 
+
 public int GetClientViewClient(int iClient)
 {
     float m_vecOrigin[3],m_angRotation[3];
